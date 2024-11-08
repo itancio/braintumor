@@ -26,7 +26,7 @@ git init
 git add *
 git commit -m 'Initial commit'
 git branch -M main
-git remote add orgin https://github.com/itancio/<repot>.git
+git remote add orgin https://github.com/itancio/braintumor.git
 git push -u origin main
 
 ## Install required packages
@@ -46,4 +46,13 @@ source venv/bin/activate
 ```bash
 cd streamlit
 streamlit run main.py
+```
+
+* Error: clearing large files in the commit history
+```bash
+git filter-branch --force --index-filter \
+'git rm --cached --ignore-unmatch notebook/xception_model.weights.h5' \
+--prune-empty --tag-name-filter cat -- --all
+
+git push origin --force --all
 ```
